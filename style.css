@@ -1,0 +1,25 @@
+.main-container {
+    display: flex;
+		margin: 0px auto;
+		width: 80vw;
+		height: 800px;
+    /* width: auto;
+    height: auto ; */
+    background-color: grey;
+}
+
+.square-div {
+	/* height: 100px; */
+	/* margin: 0px; */
+	background-color: white;
+	border-style: solid;
+	aspect-ratio: 1;
+}
+
+.column-div {
+	width: 100%;
+	/* display: inline-block; */
+	/* flex-direction: column; */
+	/* width: 100px;
+	height: 100px; */
+}
