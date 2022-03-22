@@ -1,6 +1,6 @@
 const mainContainer = document.querySelector(".main-container");
 
-let NumberOfGrids = 20;
+let NumberOfGrids = 50;
 
 const createDivs = () => {
 	for (let j = 0; j < NumberOfGrids; j++) {
@@ -10,6 +10,9 @@ const createDivs = () => {
 			// console.log(i);
 			let createSquareDiv = document.createElement("div");
 			createSquareDiv.className = "square-div";
+			createSquareDiv.onmouseover = function () {
+				createSquareDiv.style.backgroundColor = 'red';
+			}
 			createColDiv.appendChild(createSquareDiv);
 		}
 		mainContainer.appendChild(createColDiv);
