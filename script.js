@@ -5,6 +5,15 @@ let randomColor = () => {
 	return `#${randomNumber}`;
 };
 
+let mouse = 'up';
+wholePage = document.querySelector('body');
+wholePage.onmousedown = () => {
+	mouse = 'down';
+}
+wholePage.onmouseup = () => {
+	mouse = 'up';
+}
+
 const createDivs = (NumberOfGrids) => {
 	for (let j = 0; j < NumberOfGrids; j++) {
 		let createColDiv = document.createElement("div");
@@ -13,7 +22,8 @@ const createDivs = (NumberOfGrids) => {
 			let createSquareDiv = document.createElement("div");
 			createSquareDiv.style.backgroundColor = 'white';
 			createSquareDiv.className = "square-div";
-			createSquareDiv.onmouseover = function () {
+
+			createSquareDiv.onmousedown = function () {
 				if (createSquareDiv.style.backgroundColor === 'white') {
 					createSquareDiv.style.backgroundColor = randomColor();
 				} else if (createSquareDiv.style.filter === 'brightness(0%)') {
@@ -25,6 +35,22 @@ const createDivs = (NumberOfGrids) => {
 				} else {
 					createSquareDiv.style.filter = 'brightness(90%)'
 				}
+			};
+
+			createSquareDiv.onmouseenter = function () {
+				if (mouse === 'down') {
+					if (createSquareDiv.style.backgroundColor === 'white') {
+						createSquareDiv.style.backgroundColor = randomColor();
+					} else if (createSquareDiv.style.filter === 'brightness(0%)') {
+						return
+					} else if (createSquareDiv.style.filter) {
+						let currentBrightness = parseInt(createSquareDiv.style.filter.slice(11,13));
+						let newBrightness = `brightness(${currentBrightness - 10}%)`;
+						createSquareDiv.style.filter = newBrightness;
+					} else {
+						createSquareDiv.style.filter = 'brightness(90%)'
+					}
+				} else { return }
 			};
 			createColDiv.appendChild(createSquareDiv);
 		}
